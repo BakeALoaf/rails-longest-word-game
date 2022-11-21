@@ -20,21 +20,27 @@
 }
 
 #form {
-  font-size: 50px;
-  text-align: center;
+  font-size: 30px;
   margin-top: 40px;
-}
-
-#word {
-  line-height:30px;
-  width: 30%;
 }
 
 #word_box {
   line-height:30px;
   width: 30%;
+  border-radius: 5px;
 }
 
+#button {
+  text-decoration: solid;
+  background-color: rgb(0,123,255);
+  border-radius: 5px;
+  width: 120px;
+  height: 40px;
+}
+
+#button:hover {
+  background-color: rgb(4, 100, 203);
+}
 
 body {
   text-align:center;

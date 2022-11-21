@@ -3,7 +3,7 @@ require 'json'
 
 class GamesController < ApplicationController
   def new
-    @grid = generate_grid(8)
+    @grid = generate_grid(10)
   end
 
   def score
@@ -32,9 +32,9 @@ class GamesController < ApplicationController
 
   def message(score)
     puts score
-    if score < 1
+    if score < 3
       'Low Score, Try Again'
-    elsif score >= 1 && score < 5
+    elsif score >= 3 && score < 7
       'Medium score, good try!'
     else
       'Well Done! Top Points!'
@@ -44,13 +44,13 @@ class GamesController < ApplicationController
   def new_game(attempt, grid, start_time, end_time)
     response = URI.open("https://wagon-dictionary.herokuapp.com/#{attempt}")
     list = JSON.parse(response.read)
-    if (attempt.upcase.chars & grid == attempt.upcase.chars) && list['found'] == true
+    if attempt.upcase.chars & grid == attempt.upcase.chars
       your_score = result(attempt.length, end_time - start_time)
-      { time: end_time - start_time, score: result(attempt.length, end_time - start_time), message: message(your_score) }
+      { time: end_time - start_time, score: result(attempt.length, end_time - start_time) + 1, message: message(your_score) }
     elsif list['found'] == false
-      { time: end_time - start_time, score: 0, message: "not an english word" }
+      { time: end_time - start_time, score: 0, message: "sorry but '#{attempt}' does not seem to be a valid word" }
     elsif attempt.upcase.chars & grid != attempt.upcase.chars
-      { time: end_time - start_time, score: 0, message: "not in the grid" }
+      { time: end_time - start_time, score: 0, message: "sorry but '#{attempt}' can't be built out of #{grid.join(', ')}" }
     end
   end
 end
