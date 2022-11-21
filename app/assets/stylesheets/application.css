@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+ #grid {
+  font-size: 100px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#form {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#word {
+  line-height:30px;
+  width: 30%;
+}
+
+#word_box {
+  line-height:30px;
+  width: 30%;
+}
+
+
+body {
+  text-align:center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 20px;
+}
