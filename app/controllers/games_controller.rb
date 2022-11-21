@@ -22,7 +22,6 @@ class GamesController < ApplicationController
     grid_size.times do
       letters << ('A'..'Z').to_a.sample
     end
-
     letters
   end
 

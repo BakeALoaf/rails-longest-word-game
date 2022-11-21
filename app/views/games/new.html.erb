@@ -1,16 +1,18 @@
-<div id="grid">
-  <% @grid.each do |letter| %>
-    <%=letter%>
-  <%end%>
+<div class="container">
+  <div id="grid">
+    <% @grid.each do |letter| %>
+      <li id="list"><%=letter%></li>
+    <%end%>
+  </div>
+  <% string = @grid.join(",") %>
+
+
+  <form action="/score" id ="form" data-turbo="false">
+    <label for="word">Enter your word</label>
+    <input type="text" id="word_box" name="word" placeholder="Type your word here">
+    <input type="hidden" name="start_time" value=<%=Time.now%>>
+    <input type="hidden" name="grid" value=<%=string%>>
+
+    <input id="button" type="submit" fontcolor="white">
+  </form>
 </div>
-<% string = @grid.join(",") %>
-
-
-<form action="/score" id ="form" data-turbo="false">
-  <label for="word">Enter your word</label>
-  <input type="text" id="word_box" name="word" placeholder="Type your word here">
-  <input type="hidden" name="start_time" value=<%=Time.now%>>
-  <input type="hidden" name="grid" value=<%=string%>>
-
-  <input id="button" type="submit" fontcolor="white">
-</form>
